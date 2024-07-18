@@ -7,7 +7,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 
 
 class FileUploadView(viewsets.ModelViewSet):
-    """To upload xls file"""
+    """Post api to upload xls file and data will be stored in database after calculating the total values of gas, oil and brine."""
     serializer_class = FileUploadSerializer
     queryset = FileUpload.objects.all()
     http_method_names = ['post']
@@ -15,7 +15,7 @@ class FileUploadView(viewsets.ModelViewSet):
     
 
 class ProductionDataView(mixins.ListModelMixin, viewsets.GenericViewSet):
-    """Extract oil, gas, brine based on well no"""
+    """Get api to show total oil, gas and brine with filter based on well no."""
     serializer_class = ProductionDataSerializer
     queryset = ProductionData.objects.all()
     # http_method_names = ['get']
